@@ -63,3 +63,13 @@ as environment variables
     "message": "Connected to MySQL database on host 127.0.0.1"
   }
   ```
+
+## Build the application for Docker
+```sh
+# Build & Push
+docker buildx build --platform linux/amd64,linux/arm64 -t josefloressv/flask_mysql_app . --push
+
+# Run
+docker run --rm --name flask-app -p 5001:5000 --env DB_HOST=host.docker.internal --env DB_USER=root --env DB_PASSWORD=root josefloressv/flask_mysql_app
+
+```
